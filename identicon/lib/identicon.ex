@@ -16,7 +16,8 @@ defmodule Identicon do
   def save_image(image, input) do
     File.write("#{input}.png", image)
   end
-  def draw_image(%Identicon.Image{color: color, pixel_map: pixel_map}) do #we don't need image struct, so we don't need that as an argument
+
+  def draw_image(%Identicon.Image{color: color, pixel_map: pixel_map}) do #we don't need image struct within the function, so we don't need that as an argument
     image = :egd.create(250, 250)
     fill = :egd.color(color)
     Enum.each pixel_map, fn({start, stop}) ->

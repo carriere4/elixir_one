@@ -22,3 +22,5 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 identicon-*.tar
 
+#Ingore the png files that I have created
+*.png
