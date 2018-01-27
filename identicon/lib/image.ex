@@ -1,5 +1,3 @@
 defmodule Identicon.Image do
-  defstruct hex: nil, color: nil #call list of numbers as hex property with default value of nil
-
-
+  defstruct hex: nil, color: nil, grid: nil, pixel_map: nil
 end
