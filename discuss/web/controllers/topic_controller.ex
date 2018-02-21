@@ -1,11 +1,11 @@
 defmodule Discuss.TopicController do
-  use Discuss.Web, :controller
+  use Discuss.Web, :controller #this command automatically aliases Repo for us - we already aliased Topic in next line
 
   alias Discuss.Topic
 
   def index(conn, _params) do
     topics = Repo.all(Topic)
-    render conn, "index.html", topics: topics
+    render conn, "index.html", topics: topics #make available property of topics equal to list of topics.
   end
 
   def new(conn, _params) do  #new function needs to have a new template new.html.eex
