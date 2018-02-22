@@ -18,12 +18,21 @@ defmodule Discuss.TopicController do
     changeset = Topic.changeset(%Topic{}, topic)
 
     case Repo.insert(changeset) do
-      {:ok, post} -> IO.inspect(post)
+      {:ok, post} ->
+        conn
+        |> put_flash(:info, "Topic Created")
+        |> redirect(to: topic_path(conn, :index))
       {:error, changeset} ->
         render conn, "new.html", changeset: changeset
     end
   end
 
+  def edit(conn, %{"id" => topic_id}) do  #creates a map with funky key/value syntax in params
+    topic = Repo.get(Topic, topic_id)  #pull topic out of the database with the Repo.get helper
+    changeset = Topic.changeset(topic) #we then create a changeset out of that topic
+
+    render conn, "edit.html", changeset: changeset, topic: topic 
+  end
 end
 
 #passes in changeset or other custom data into new.html.eex

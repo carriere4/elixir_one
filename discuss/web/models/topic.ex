@@ -5,7 +5,7 @@
     field :title, :string
   end
 
-  def changeset(struct, params \\ %{}) do
+  def changeset(struct, params \\ %{}) do #if params is undefined, default params to an empty map
     struct
     |> cast(params, [:title])
     |> validate_required([:title])
