@@ -24,6 +24,13 @@ defmodule Discuss.Router do
     resources "/", TopicController  #resources helper tells phoenix that topic-controller has followed RESTful conventions - it does eliminate the "topics" after "/"
   end
 
+  scope "/auth", Discuss do
+    pipe_through :browser
+
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", Discuss do
   #   pipe_through :api
